@@ -3,22 +3,27 @@ import About from './components/pages/About/About';
 import HomePage from './components/pages/HomePage/HomePage';
 import Post from './components/pages/post/Post';
 import AddPost from './components/pages/post/AddPost';
-import Container from './components/views/Container';
-import NavBar from './components/views/NavBar';
+import EditPost from './components/pages/post/EditPost';
+import Header from './components/views/Header';
+import Footer from './components/views/Footer';
 import NotFound from './components/pages/NotFound.jsx';
+import { Container } from 'react-bootstrap';
+
 function App() {
 	return (
 		<main>
-			<NavBar />
+			<Header />
 			<Container>
 				<Routes>
 					<Route path="/" element={<HomePage />} />
 					<Route path="/about" element={<About />} />
 					<Route path="/post/:postId" element={<Post />} />
 					<Route path="/post/add" element={<AddPost />} />
+					<Route path="/post/edit/:id" element={<EditPost />} />
 					<Route path="*" element={<NotFound />} />
 				</Routes>
 			</Container>
+			<Footer />
 		</main>
 	);
 }

@@ -1,0 +1,33 @@
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import { NavLink } from 'react-router-dom';
+
+const PostCard = ({
+	id,
+	title,
+	content,
+	author,
+	publishedDate,
+	shortDescription,
+}) => {
+	return (
+		<Card className="mx-1 my-2">
+			<Card.Body className="">
+				<Card.Title className="fw-bold">{title}</Card.Title>
+				<Card.Text className="fs-6">
+					<span className="fw-bold">Author: </span>
+					{author}
+				</Card.Text>
+				<Card.Text>
+					<span className="fw-bold">Published: </span>
+					{publishedDate}
+				</Card.Text>
+				<Card.Text>{shortDescription}</Card.Text>
+				<Button as={NavLink} to="/post/:id" variant="primary">
+					Read more
+				</Button>
+			</Card.Body>
+		</Card>
+	);
+};
+export default PostCard;
