@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { getAllPosts } from '../../redux/postsRedux';
 import PostCard from './PostCard';
-import { Col, Row, Container } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 const AllPosts = () => {
 	const posts = useSelector((posts) => getAllPosts(posts));
 	return (

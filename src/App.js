@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 import About from './components/pages/About/About';
 import HomePage from './components/pages/HomePage/HomePage';
-import Post from './components/pages/post/Post';
 import AddPost from './components/pages/post/AddPost';
-import EditPost from './components/pages/post/EditPost';
+import EditPost from './components/pages/post/edit/EditPost';
+import Post from './components/pages/post/Post';
 import Header from './components/views/Header';
 import Footer from './components/views/Footer';
 import NotFound from './components/pages/NotFound.jsx';
@@ -19,7 +19,7 @@ function App() {
 					<Route path="/about" element={<About />} />
 					<Route path="/post/:postId" element={<Post />} />
 					<Route path="/post/add" element={<AddPost />} />
-					<Route path="/post/edit/:id" element={<EditPost />} />
+					<Route path="/post/edit/:postId" element={<EditPost />} />
 					<Route path="*" element={<NotFound />} />
 				</Routes>
 			</Container>

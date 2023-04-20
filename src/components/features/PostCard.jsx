@@ -2,14 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { NavLink } from 'react-router-dom';
 
-const PostCard = ({
-	id,
-	title,
-	content,
-	author,
-	publishedDate,
-	shortDescription,
-}) => {
+const PostCard = ({ id, title, author, publishedDate, shortDescription }) => {
 	return (
 		<Card className="mx-1 my-2">
 			<Card.Body className="">
@@ -23,7 +16,7 @@ const PostCard = ({
 					{publishedDate}
 				</Card.Text>
 				<Card.Text>{shortDescription}</Card.Text>
-				<Button as={NavLink} to="/post/:id" variant="primary">
+				<Button as={NavLink} to={`post/${id}`} variant="primary">
 					Read more
 				</Button>
 			</Card.Body>
