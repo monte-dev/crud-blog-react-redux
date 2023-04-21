@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import { Nav, Navbar, Container, ContainerFluid } from 'react-bootstrap';
+import { Nav, Navbar, Container } from 'react-bootstrap';
 
 const NavBar = () => {
 	return (
