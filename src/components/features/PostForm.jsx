@@ -85,4 +85,15 @@ const PostForm = ({ action, actionText, ...props }) => {
 		</Form>
 	);
 };
+
+PostForm.propTypes = {
+	action: PropTypes.func.isRequired,
+	actionText: PropTypes.string.isRequired,
+	title: PropTypes.string,
+	author: PropTypes.string,
+	publishedDate: PropTypes.string,
+	shortDescription: PropTypes.string,
+	content: PropTypes.string,
+};
+
 export default PostForm;
