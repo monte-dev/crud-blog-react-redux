@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getPostById, removePost } from '../../../redux/postsRedux';
 import { Col, Row, Button } from 'react-bootstrap';
 import Modal from 'react-bootstrap/Modal';
+import { dateToString } from '../../../utils/dateToString';
 
 const Post = () => {
 	const dispatch = useDispatch();
@@ -56,9 +57,12 @@ const Post = () => {
 					</p>
 					<p className="my-2">
 						<span className="fw-bold">Published: </span>
-						{publishedDate}
+						{dateToString(publishedDate)}
 					</p>
-					<p className="mt-4 mb-5">{content}</p>
+					<p
+						dangerouslySetInnerHTML={{ __html: content }}
+						className="mt-4 mb-5"
+					></p>
 				</Col>
 			</Row>
 			<Modal show={show} onHide={handleClose} backdrop="static">

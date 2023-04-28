@@ -1,8 +1,10 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { NavLink } from 'react-router-dom';
+import { dateToString } from '../../utils/dateToString';
 
 const PostCard = ({ id, title, author, publishedDate, shortDescription }) => {
+	console.log({ publishedDate });
 	return (
 		<Card className="mx-1 my-2">
 			<Card.Body className="">
@@ -13,7 +15,7 @@ const PostCard = ({ id, title, author, publishedDate, shortDescription }) => {
 				</Card.Text>
 				<Card.Text>
 					<span className="fw-bold">Published: </span>
-					{publishedDate}
+					{dateToString(publishedDate)}
 				</Card.Text>
 				<Card.Text>{shortDescription}</Card.Text>
 				<Button as={NavLink} to={`post/${id}`} variant="primary">

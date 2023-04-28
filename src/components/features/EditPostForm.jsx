@@ -6,7 +6,6 @@ import PostForm from './PostForm';
 
 const EditPostForm = ({ action, actionText }) => {
 	const { postId } = useParams();
-	console.log(postId);
 	const post = useSelector((currentPost) => getPostById(currentPost, postId));
 
 	const dispatch = useDispatch();
