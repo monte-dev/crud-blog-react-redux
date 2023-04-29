@@ -2,19 +2,26 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import Form from 'react-bootstrap/Form';
 import { Button } from 'react-bootstrap';
+import { getAllCategories } from '../../redux/categoriesRedux';
 
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import ReactDatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useForm } from 'react-hook-form';
+import { useSelector } from 'react-redux';
 
 const PostForm = ({ action, actionText, ...props }) => {
+	const categories = useSelector((categories) =>
+		getAllCategories(categories)
+	);
+
 	const [title, setTitle] = useState(props.title || '');
 	const [author, setAuthor] = useState(props.author || '');
 	const [publishedDate, setPublishedDate] = useState(
 		props.publishedDate || ''
 	);
+	const [category, setCategory] = useState(props.category || '');
 	const [shortDescription, setShortDescription] = useState(
 		props.shortDescription || ''
 	);
@@ -27,7 +34,14 @@ const PostForm = ({ action, actionText, ...props }) => {
 		setContentError(!content);
 		setDateError(!publishedDate);
 		if (content && publishedDate) {
-			action({ title, author, publishedDate, shortDescription, content });
+			action({
+				title,
+				author,
+				publishedDate,
+				category,
+				shortDescription,
+				content,
+			});
 		}
 	};
 
@@ -86,6 +100,21 @@ const PostForm = ({ action, actionText, ...props }) => {
 						Date cannot be empty
 					</small>
 				)}
+			</Form.Group>
+			<Form.Group>
+				<Form.Label>Category</Form.Label>
+				<Form.Select
+					aria-label="Category"
+					onChange={(e) => setCategory(e.target.value)}
+				>
+					{categories.map((category) => {
+						return (
+							<option key={category.id} value={category.name}>
+								{category.name}
+							</option>
+						);
+					})}
+				</Form.Select>
 			</Form.Group>
 			<Form.Group className="mb-3" controlId="postDescription">
 				<Form.Label>Short Description</Form.Label>

@@ -14,13 +14,15 @@ const Post = () => {
 	const handleShow = () => setShow(true);
 
 	const { postId } = useParams();
+
 	const post = useSelector((currentPost) => getPostById(currentPost, postId));
+
 	// if post is undefined === doesn't exist
 	if (!post) {
 		return <Navigate to="/" />;
 	}
 	//  destructure after confirming post exists
-	const { title, content, author, publishedDate, id } = post;
+	const { title, content, author, publishedDate, category, id } = post;
 
 	const handleRemovePost = () => {
 		console.log('removed');
@@ -58,6 +60,10 @@ const Post = () => {
 					<p className="my-2">
 						<span className="fw-bold">Published: </span>
 						{dateToString(publishedDate)}
+					</p>
+					<p className="my-2">
+						<span className="fw-bold">Category: </span>
+						{category}
 					</p>
 					<p
 						dangerouslySetInnerHTML={{ __html: content }}

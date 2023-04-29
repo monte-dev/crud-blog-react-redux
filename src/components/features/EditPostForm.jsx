@@ -1,12 +1,11 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Col } from 'react-bootstrap';
-import { editPost, getPostById } from '../../redux/postsRedux';
+import { editPost } from '../../redux/postsRedux';
 import PostForm from './PostForm';
 
 const EditPostForm = ({ action, actionText }) => {
 	const { postId } = useParams();
-	const post = useSelector((currentPost) => getPostById(currentPost, postId));
 
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
